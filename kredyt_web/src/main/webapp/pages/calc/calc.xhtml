@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/templates/main-template.xhtml">
+
+	<ui:define name="title">
+		Kredyt 01 - kalkulator rat kredytu
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5" styleClass="bottom-space">
+				<h:outputLabel for="idloan" value="Wysokość kredytu:" />
+				<h:inputText id="idloan" value="#{calcBB.loan}" required="true"
+					requiredMessage="Podaj wartość kredytu" converterMessage="niepoprawny format wysokości kredytu" />
+				<h:outputLabel for="idinstallment" value="Ilość rat na rok:" />
+				<h:inputText id="idinstallment" value="#{calcBB.installment}" required="true"
+					requiredMessage="Podaj ilość rat na rok" converterMessage="niepoprawny format ilości rat na rok" />
+				<h:outputLabel for="idinterest" value="Oprocentowanie kredytu:" />
+				<h:inputText id="idinterest" value="#{calcBB.interest}" required="true"
+					requiredMessage="Podaj oprocentowanie kredytu" converterMessage="niepoprawny orpocentowania kredytu" />
+				<h:outputLabel for="idinAmount" value="Ilość wszystkich rat:" />
+				<h:inputText id="idinAmount" value="#{calcBB.inAmount}" required="true"
+					requiredMessage="Podaj ilość wszystkich rat" converterMessage="niepoprawny format ilości wszystkich rat" />
+				<h:commandButton value="Oblicz" action="#{calcBB.calc()}"
+					update="msg" />
+			</h:panelGrid>
+		</h:form>
+
+		<h:messages id="msg" />
+
+	</ui:define>
+
+</ui:composition>
+</html>
